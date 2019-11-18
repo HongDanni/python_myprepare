@@ -20,6 +20,6 @@ if __name__ == '__main__':
     for i in range(5):
         p.apply_async(long_time_task, args=(i,))  # 函数的参数以元组的方式传入
     print('Waiting for all subprocesses done...')
-    p.close()
-    p.join()
+    p.close()  # close()之后不能添加新的process了
+    p.join()  # 等待所有子进程执行完毕;必须先调用close()
     print('All subprocesses done.')
